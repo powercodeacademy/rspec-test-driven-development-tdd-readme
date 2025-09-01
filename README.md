@@ -1,6 +1,6 @@
 # RSpec: Test-Driven Development (TDD): Red, Green, Refactor, Repeat
 
-Welcome to Lesson 3! If you’ve ever wanted to feel like a code wizard—summoning features out of thin air and banishing bugs before they appear—TDD is your magic spellbook. In this lesson, we’ll break down Test-Driven Development (TDD) into bite-sized steps, and show you how RSpec makes it all possible.
+If you’ve ever wanted to feel like a code wizard—summoning features out of thin air and banishing bugs before they appear—TDD is your magic spellbook. In this lesson, we’ll break down Test-Driven Development (TDD) into bite-sized steps, and show you how RSpec makes it all possible.
 
 ---
 

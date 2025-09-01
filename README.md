@@ -40,29 +40,39 @@ flowchart TD
 **Red:**
 
 ```ruby
-# /spec/double_spec.rb
-it "returns twice the input number" do
-  expect(double(2)).to eq(4)
+# /spec/movie_spec.rb
+it "has a title" do
+  expect(Movie.new("Inception", 148).title).to eq("Inception")
 end
-# (Fails: undefined method `double`)
+# (Fails: undefined method `title`)
 ```
 
 **Green:**
 
 ```ruby
-# /double.rb
-def double(n)
-  4 # Cheating, but it passes!
+# /lib/movie.rb
+class Movie
+  def initialize(title, duration)
+    @title = title
+  end
+
+  def title
+    @title
+  end
 end
-# (Test passes for 2, but not for other numbers)
+# (Test passes for title, but not for duration)
 ```
 
 **Refactor:**
 
 ```ruby
-# /double.rb
-def double(n)
-  n * 2
+# /lib/movie.rb
+class Movie
+  attr_reader :title, :duration
+  def initialize(title, duration)
+    @title = title
+    @duration = duration
+  end
 end
 # (Now all tests pass, and code is clean)
 ```
@@ -166,11 +176,37 @@ TDD isn’t just for fancy-pants developers or Silicon Valley startups. It’s f
 - **Skipping the refactor step**: Don’t leave messy code behind. Clean as you go!
 - **Making tests too broad**: Keep tests focused and specific. It’s easier to spot what’s broken.
 
-## Practice Prompts
+## Getting Hands-On: Practicing TDD with Movies
 
-1. Try TDDing a method that returns the square of a number. What’s your red/green/refactor cycle look like?
-2. What happens if you skip the refactor step? Try it and see!
-3. How does TDD change the way you think about writing code?
+Ready to practice? Here’s how to get started:
+
+1. **Fork and clone this repo to your own GitHub account.**
+2. **Install dependencies:**
+
+    ```zsh
+    bundle install
+    ```
+
+3. **Run the specs:**
+
+    ```zsh
+    bin/rspec
+    ```
+
+4. **Explore the code and specs:**
+
+   - All lesson code uses the Movie and Screening domain (see `lib/` and `spec/`).
+   - The spec file (`spec/movie_spec.rb`) is written to show the TDD process for each feature:
+     - Each example starts with a failing test (Red), then you write just enough code to make it pass (Green), and finally refactor (Refactor).
+     - You’ll see 10+ features, each developed in this TDD cycle.
+   - The two specs marked as `pending` are for you to practice TDD:
+     - For each, start by running the specs and seeing the pending message (Red).
+     - Write the minimum code in `lib/movie.rb` to make the spec pass (Green).
+     - Refactor your code if needed (Refactor).
+
+5. **Re-run the specs** to verify your changes!
+
+**Challenge:** Try writing your own TDD cycle for a new Movie feature (e.g., "Movie#average_screening_time" or "Screening#cancel!").
 
 ---
 

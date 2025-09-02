@@ -1,3 +1,5 @@
+require 'pry'
+
 class Movie
   attr_reader :title, :duration, :screenings
 
@@ -13,5 +15,9 @@ class Movie
 
   def upcoming_screenings(current_time)
     screenings.select { |s| s.time > current_time }
+  end
+
+  def screenings_on(current_time)
+    screenings.select { |s| s.time == current_time }
   end
 end

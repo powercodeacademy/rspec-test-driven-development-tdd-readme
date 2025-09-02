@@ -69,6 +69,13 @@ RSpec.describe Movie do
   end
 
   # Pending specs for students (TDD Red step)
-  pending "returns all screenings for a given date" # students implement Movie#screenings_on(date)
+  it "returns all screenings for a given date" do
+    current_time = Time.now
+    movie = Movie.new("Inception", 148)
+    current_screening = Screening.new(current_time, "Theater 1")
+    movie.add_screening(current_screening)
+    expect(movie.screenings_on(current_time)).to eq([current_screening])
+  end 
+
   pending "can cancel a screening by time and theater" # students implement Movie#cancel_screening(time, theater)
 end

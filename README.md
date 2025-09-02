@@ -202,7 +202,9 @@ Ready to practice? Here’s how to get started:
      - Each example starts with a failing test (Red), then you write just enough code to make it pass (Green), and finally refactor (Refactor).
      - You’ll see 10+ features, each developed in this TDD cycle.
    - The two specs marked as `pending` are for you to practice TDD:
-     - For each, start by running the specs and seeing the pending message (Red).
+     - In RSpec, `pending` means the test is temporarily disabled. You'll see a yellow "PENDING" message when you run the specs.
+     - To practice TDD, replace `pending` with `it` to make it an active test (this will show as a failing test - Red).
+     - Start by writing a failing test to define the behavior you want to implement (Red step).
      - Write the minimum code in `lib/movie.rb` to make the spec pass (Green).
      - Refactor your code if needed (Refactor).
 

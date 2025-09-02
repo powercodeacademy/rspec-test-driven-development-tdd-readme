@@ -20,4 +20,9 @@ class Movie
   def screenings_on(current_time)
     screenings.select { |s| s.time == current_time }
   end
+
+  def cancel_screening(current_time, theater)
+    screening = screenings.find { |s| s.time == current_time && s.theater == theater }
+    screenings.delete(screening)
+  end
 end

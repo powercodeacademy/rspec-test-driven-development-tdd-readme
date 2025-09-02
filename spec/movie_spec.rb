@@ -77,5 +77,13 @@ RSpec.describe Movie do
     expect(movie.screenings_on(current_time)).to eq([current_screening])
   end 
 
-  pending "can cancel a screening by time and theater" # students implement Movie#cancel_screening(time, theater)
+  it "can cancel a screening by time and theater" do
+    current_time = Time.now
+    movie = Movie.new("Inception", 148)
+    screening = Screening.new(current_time, "Theater 2")
+    movie.add_screening(screening)
+    movie.cancel_screening(current_time, "Theater 2")
+    expect(movie.screenings).not_to include(screening)
+  end
+
 end

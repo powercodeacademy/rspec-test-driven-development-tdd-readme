@@ -79,35 +79,37 @@ end
 
 Repeat this cycle for every new feature or behavior!
 
-Let’s say you want to write a method that doubles a number. Here’s how you’d do it, TDD-style. For each code example, check the comment at the top to see which file it belongs in!
+Let's say you want to write a method that doubles a number. Here's how you'd do it, TDD-style. **You'll need to create these files yourself** - they don't exist yet! For each code example, check the comment at the top to see which file it belongs in!
 
 ## The Red-Green-Refactor Cycle In Depth
 
 ### Step 1: Red (Write a Failing Test)
 
+First, create the test file:
+
 ```ruby
 # /spec/double_spec.rb
 require_relative '../double' # Make sure to require the file with your method!
 
-RSpec.describe "#double" do
+RSpec.describe "#double_number" do
   it "returns twice the input number" do
-    expect(double(2)).to eq(4)
+    expect(double_number(2)).to eq(4)
   end
 end
 ```
 
-If you run this test now, it will fail. That’s good! You haven’t written the `double` method yet.
+If you run this test now, it will fail. That's good! You haven't written the `double_number` method yet.
 
 **Sample Failing Output:**
 
 ```shell
 Failures:
 
-  1) #double returns twice the input number
-     Failure/Error: expect(double(2)).to eq(4)
+  1) #double_number returns twice the input number
+     Failure/Error: expect(double_number(2)).to eq(4)
 
      NameError:
-       undefined local variable or method `double' for #<RSpec::ExampleGroups::Double:0x00007f...>
+       undefined local variable or method `double_number' for #<RSpec::ExampleGroups::DoubleNumber:0x00007f...>
      # ./spec/double_spec.rb:4:in `block (2 levels) in <top (required)>'
 
 Finished in 0.01 seconds (files took 0.1 seconds to load)
@@ -118,7 +120,7 @@ Finished in 0.01 seconds (files took 0.1 seconds to load)
 
 ```ruby
 # /double.rb
-def double(n)
+def double_number(n)
   4 # This is cheating, but it passes the test!
 end
 ```
@@ -128,7 +130,7 @@ But wait! That only works for 2. Let’s add another test:
 ```ruby
 # /spec/double_spec.rb
 it "works for other numbers too" do
-  expect(double(5)).to eq(10)
+  expect(double_number(5)).to eq(10)
 end
 ```
 
@@ -136,7 +138,7 @@ Now your code needs to be smarter:
 
 ```ruby
 # /double.rb
-def double(n)
+def double_number(n)
   n * 2
 end
 ```
@@ -147,7 +149,7 @@ In this case, our code is already pretty clean. But if you had extra logic, comm
 
 ```ruby
 # /double.rb (after refactor)
-def double(number)
+def double_number(number)
   number * 2
 end
 ```
@@ -183,15 +185,15 @@ Ready to practice? Here’s how to get started:
 1. **Fork and clone this repo to your own GitHub account.**
 2. **Install dependencies:**
 
-    ```zsh
-    bundle install
-    ```
+   ```zsh
+   bundle install
+   ```
 
 3. **Run the specs:**
 
-    ```zsh
-    bin/rspec
-    ```
+   ```zsh
+   bin/rspec
+   ```
 
 4. **Explore the code and specs:**
 
@@ -216,4 +218,4 @@ Ready to practice? Here’s how to get started:
 - [Test-Driven Development by Example (Kent Beck)](https://www.goodreads.com/book/show/387190.Test_Driven_Development)
 - [Thoughtbot: TDD in Ruby](https://thoughtbot.com/upcase/test-driven-rails-resources)
 
-*Next: You’ll learn about RSpec’s examples, expectations, and matchers—the building blocks of every great test!*
+_Next: You’ll learn about RSpec’s examples, expectations, and matchers—the building blocks of every great test!_
